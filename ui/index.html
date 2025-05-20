@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supply Chain DApp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="bg-blobs">
+            <div class="blob"></div>
+            <div class="blob"></div>
+            <div class="blob"></div>
+            <div class="blob"></div>
+            <div class="blob"></div>
+            <div class="blob"></div>
+            <div class="blob"></div>
+            <div class="blob"></div>
+          </div>
+        <h1>Supply Chain Management</h1>
+        
+        <button id="connectWalletBtn">Connect Wallet</button>
+        <div id="walletInfo">
+            <p>Status: <span id="connectionStatus">Not Connected</span></p>
+            <p>Account: <span id="accountAddress">N/A</span></p>
+            <p>Network: <span id="networkName">N/A</span></p>
+            <p>Contract Address: <input type="text" id="contractAddressInput" placeholder="Enter Deployed Contract Address" size="50"></p>
+            <button id="loadContractBtn">Load Contract</button>
+        </div>
+
+        <div id="dappInterface" style="display: none;">
+            <hr>
+            <h2>Owner Actions</h2>
+            <div class="action-group">
+                <h3>Register Participant</h3>
+                <input type="text" id="participantAddress" placeholder="Participant Address">
+                <select id="participantRole">
+                    <option value="manufacturer">Manufacturer</option>
+                    <option value="distributor">Distributor</option>
+                    <option value="retailer">Retailer</option>
+                </select>
+                <button id="registerParticipantBtn">Register</button>
+            </div>
+
+            <hr>
+            <h2>Manufacturer Actions</h2>
+            <div class="action-group">
+                <h3>Create Product</h3>
+                <input type="text" id="productName" placeholder="Product Name">
+                <input type="text" id="initialLocation" placeholder="Initial Location">
+                <button id="createProductBtn">Create Product</button>
+            </div>
+            
+            <hr>
+            <h2>Product Lifecycle Actions</h2>
+            <div class="action-group">
+                <h3>Ship Product</h3>
+                <input type="number" id="shipProductId" placeholder="Product ID">
+                <input type="text" id="shipToAddress" placeholder="To Address (Distributor/Retailer)">
+                <input type="text" id="shipNewLocation" placeholder="New Location">
+                <select id="shipNewStatus">
+                    <!-- Options will be populated by JS -->
+                </select>
+                <button id="shipProductBtn">Ship Product</button>
+            </div>
+
+            <div class="action-group">
+                <h3>Update Product Status (Receipt)</h3>
+                <input type="number" id="updateStatusProductId" placeholder="Product ID">
+                <input type="text" id="updateStatusNewLocation" placeholder="New Location (e.g., Warehouse Bay)">
+                 <select id="updateStatusNewStatus">
+                    <!-- Options will be populated by JS -->
+                </select>
+                <button id="updateProductStatusBtn">Update Status</button>
+            </div>
+
+            <div class="action-group">
+                <h3>Mark Product as Sold (Retailer)</h3>
+                <input type="number" id="sellProductId" placeholder="Product ID">
+                <input type="text" id="sellConsumerAddress" placeholder="Consumer Address">
+                <input type="text" id="sellFinalLocation" placeholder="Final Location (e.g., Consumer's Home)">
+                <button id="markAsSoldBtn">Mark as Sold</button>
+            </div>
+
+            <hr>
+            <h2>View Product Information</h2>
+            <div class="action-group">
+                <h3>Get Product Details</h3>
+                <input type="number" id="viewProductIdDetails" placeholder="Product ID">
+                <button id="getProductDetailsBtn">Get Details</button>
+                <pre id="productDetailsOutput"></pre>
+            </div>
+            <div class="action-group">
+                <h3>Get Product History</h3>
+                <input type="number" id="viewProductIdHistory" placeholder="Product ID">
+                <button id="getProductHistoryBtn">Get History</button>
+                <pre id="productHistoryOutput"></pre>
+            </div>
+        </div>
+        <hr>
+        <h2>Logs & Status</h2>
+        <div id="logOutput"></div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -56,7 +56,12 @@ This project demonstrates a basic supply chain management system built using a S
     ```bash
     npx hardhat test
     ```
+7.  **Run tests:**
+    ```bash
+    npx server ui
+    ```
 
+    
 ## Participants (from Hardhat node accounts)
 
 The `deploy.js` and `interact.js` scripts use the default Hardhat accounts:
